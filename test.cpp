@@ -3,8 +3,8 @@
 
 int main()
 {
-  SheLog t;
-  t.debug();
+  sheLog::SheLog t("./","log");
+  t.logMessage(sheLog::logLevel::DEBUG,"123");
 
   return 0;
 }

@@ -1,7 +1,9 @@
 #ifndef __SHE_LOG_HPP_
 #define __SHE_LOG_HPP_
 
+#include <stdio.h>
 #include <string>
+#include <memory>
 #include "Time/Time.hpp"
 
 namespace sheLog {
@@ -16,18 +18,30 @@ enum logLevel{
 
 class SheLog {
  private:
-  uint32_t _logVersion;
   std::string _path;
+  std::string _logFileName;
   Time _time;
+  FILE* _log;
  public:
-  SheLog() {
+  SheLog(std::string path, std::string logFileName)
+      : _time(Time()) ,
+        _path(path) ,
+        _logFileName(logFileName) ,
+        _log(nullptr) {
+    _log = fopen((_path+"/"+_logFileName+".log").c_str(),"a+");
+    if (_log == nullptr) {
+      exit(1);
+    }
   };
 
   ~SheLog() {
+    fclose(_log);
   };
 
-  void logMessage(const std::string &message) {
-
+  void logMessage(logLevel t,const std::string& message) {
+    std::string str = "["+this->setLevel(t)+"]"+ message ;
+    fprintf(_log,"[%s]%s\n",_time.getFullDate().c_str(), str.c_str());
+    fflush(_log);
   };
 
   std::string setLevel(logLevel t){
