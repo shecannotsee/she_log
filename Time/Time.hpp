@@ -1,82 +1,61 @@
 #ifndef __TIME_HPP_
 #define __TIME_HPP_
 
-#define __SHE_TEST_
-#ifdef  __SHE_TEST_
-#include <iostream>
-#include <unistd.h>//sleep
-#endif//!__SHE_TEST_
-
 #include <chrono>
 #include <ctime>
 #include <string>
+#include <memory>
 
+namespace sheLog{
 typedef unsigned long long  uint64_t;
 typedef unsigned int        uint32_t;
 
-class Time
-{
-public:
-  Time(){
+class Time {
+ public:
+  Time() {
   };
-  ~Time(){
+  ~Time() {
   };
 
 public:
-  //以字符串格式返回当前日期,格式(去掉所有的-)为:1997-04-03-19-11-00
+  //以字符串格式返回当前日期,格式(去掉所有的-)为:1997-04-03 19:11:00
   std::string getFullDate(){
-    return getDate();
+    return this->getYearMonthDay() + " " + this->getHourMinuteSeconds();
   };
 
-  //以字符串格式返回当前年月日,格式(去掉所有的-)为:1997-04-03
+  //以字符串格式返回当前年月日,格式为:1997-04-03
   std::string getYearMonthDay(){
-    return getDate().substr(0,8);
+    std::string lalala =  getDate().substr(0,8);
+    lalala.insert(4,"-");
+    lalala.insert(7,"-");
+    return lalala;
   }
 
-  //以字符串格式返回当前时分秒,格式(去掉所有的-)为:12-00-00
+  //以字符串格式返回当前时分秒,格式为:12:00:00
   std::string getHourMinuteSeconds(){
-    return getDate().substr(8,6);
+    std::string lalala = getDate().substr(8,6);
+    lalala.insert(2,":");
+    lalala.insert(5,":");
+    return lalala;
   }
 
   void start(){
-    m_timeFirst = std::chrono::system_clock::now();
+    _timeFirst = std::chrono::system_clock::now();
   }
 
   //配合start()函数使用,返回消耗时间,单位为毫秒(1s=1000ms)
   uint64_t getTimeSpentWithMilli(){
-    m_timeSecond = std::chrono::system_clock::now();
-    return (std::chrono::time_point_cast<std::chrono::duration<int,std::ratio<1,1000>>>(m_timeSecond) 
-           - std::chrono::time_point_cast<std::chrono::duration<int,std::ratio<1,1000>>>(m_timeFirst)
+    _timeSecond = std::chrono::system_clock::now();
+    return (std::chrono::time_point_cast<std::chrono::duration<int,std::ratio<1,1000>>>(_timeSecond)
+           - std::chrono::time_point_cast<std::chrono::duration<int,std::ratio<1,1000>>>(_timeFirst)
            ).count();
-    
+
   }
   //配合start()函数使用,返回消耗时间,单位为微秒(1s=1000000us)
   uint64_t getTimeSpentWithMicro(){
-    m_timeSecond = std::chrono::system_clock::now();
-    return (m_timeSecond-m_timeFirst).count();
+    _timeSecond = std::chrono::system_clock::now();
+    return (_timeSecond-_timeFirst).count();
   }
-
-  //用来测试
-  void debug(){
-#ifdef __SHE_TEST_
-    std::chrono::duration<int, std::milli>  ms_record;//milli-毫秒,micro-微秒,nano-纳秒
-    ms_record = std::chrono::duration<int, std::milli>(3000);//赋值
-    std::cout<<ms_record.count()<<"\n";//取值
-    std::chrono::system_clock::time_point current_time = std::chrono::system_clock::now();
-    std::cout << "current_time = " << current_time.time_since_epoch().count() << "\n";
-
-    m_timeFirst = std::chrono::system_clock::now();//第一次获取当前时间
-    sleep(3);//sleep  3s
-    m_timeSecond = std::chrono::system_clock::now();//第二次获取当前时间
-    //微秒
-    std::cout<<(m_timeSecond-m_timeFirst).count()<<"\n";
-    //毫秒
-    std::cout<<static_cast<uint32_t>(
-                (std::chrono::time_point_cast<std::chrono::duration<int,std::ratio<1,1000>>>(m_timeSecond) 
-                - std::chrono::time_point_cast<std::chrono::duration<int,std::ratio<1,1000>>>(m_timeFirst)
-                ).count())<<"\n";
-#endif//!__SHE_TEST_
-  };
 
 private:
   std::string getDate(){
@@ -112,12 +91,12 @@ private:
     }
     timeStr += std::to_string(timePtr->tm_sec);
 
-    return timeStr;
+    return std::move(timeStr);
   }
 
-  std::chrono::system_clock::time_point m_timeFirst;
-  std::chrono::system_clock::time_point m_timeSecond;
+  std::chrono::system_clock::time_point _timeFirst;
+  std::chrono::system_clock::time_point _timeSecond;
 };
 
-
+};//namespace sheLog
 #endif//!__TIME_HPP_

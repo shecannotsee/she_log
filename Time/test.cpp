@@ -1,4 +1,3 @@
-#include <time.h>
 #include <unistd.h>//sleep
 #include <iostream>
 #include "Time.hpp"
@@ -6,7 +5,7 @@ using namespace std;
 
 int main()
 {
-  Time t;
+  sheLog::Time t;
   //t.debug();
   t.start();
   sleep(3);
