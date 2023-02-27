@@ -14,6 +14,18 @@
 
 namespace sheLog {
 
+enum log_level : unsigned char {
+  ALL     = 0,
+  TRACE   = 1,
+  DEBUG   = 2,
+  INFO    = 3,
+  WARNING = 4,
+  ERROR   = 5,
+  FATAL   = 6,
+  OFF     = 7
+};
+
+
 };// namespace sheLog
 
 #endif //SHELOG_SRC_LOG_LEVEL_H_
