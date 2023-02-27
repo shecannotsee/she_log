@@ -13,11 +13,16 @@ namespace sheLog {
 
 class Fopen {
  public:
-  Fopen();
+  Fopen() = delete;
+  Fopen(const char *filename,const char *mode = "a+");
   ~Fopen();
- private:
-  std::unique_ptr<FILE> file_;
 
+ private:
+  FILE* file_;
+  std::string file_name_;
+
+ public:
+  void write(const std::string& content);
 };
 
 };// namespace sheLog
