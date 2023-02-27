@@ -10,8 +10,8 @@
 
 int main() {
   std::cout<< "Test start.\n";
-  m1_she_log_exception_test::main();
-//  m2_Fopen_test::main();
+//  m1_she_log_exception_test::main();
+  m2_Fopen_test::main();
 //  sheLog_test::main();
 //  time_test::main();
 
