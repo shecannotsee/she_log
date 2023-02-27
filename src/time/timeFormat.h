@@ -5,10 +5,7 @@
 #include <string>
 #include <chrono>
 #include <tuple>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
-#include <time.h>
+#include <map>
 
 #ifndef SHE_LOG_SRC_TIME_TIMEFORMAT_H_
 #define SHE_LOG_SRC_TIME_TIMEFORMAT_H_
@@ -19,6 +16,13 @@ namespace time {
 
 using ms_us = std::tuple<std::chrono::milliseconds,std::chrono::microseconds>;
 
+static std::map<std::string, std::string> month_map = {
+    {"Jan", "01"}, {"Feb", "02"}, {"Mar", "03"}, {"Apr", "04"},
+    {"May", "05"}, {"Jun", "06"}, {"Jul", "07"}, {"Aug", "08"},
+    {"Sep", "09"}, {"Oct", "10"}, {"Nov", "11"}, {"Dec", "12"}
+};
+
+
 ms_us get_ms() {
   auto now = std::chrono::system_clock::now();
   return std::make_pair(std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000,
@@ -26,19 +30,16 @@ ms_us get_ms() {
 };
 
 std::string get_format_time() {
-  auto time = get_ms();
-  std::chrono::system_clock::time_point tp_ms(std::chrono::milliseconds(std::get<0>(time)));
-  std::chrono::system_clock::time_point tp_us(std::get<1>(time));
-  // 将时间点转换为 time_t
-  std::time_t t = std::chrono::system_clock::to_time_t(tp_ms);
-
-  // 将 time_t 转换为 struct tm
-  std::tm tm = *std::gmtime(&t);
-
-  // 格式化时间字符串
-  std::ostringstream oss;
-  oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S.") << std::setfill('0') << std::setw(6) << std::get<0>(time).count() % 1000000;
-  return oss.str();
+  auto now = std::chrono::system_clock::now();
+  std::time_t tm_1 = std::chrono::system_clock::to_time_t(now);
+  /*012(week) 456(month) 89(day) 11-18(time) 20-23(year)*/
+  std::string today = std::ctime(&tm_1);
+  std::string ret;
+  ret += today.substr(20,4)+" ";
+  ret += month_map[today.substr(4,3)]+" ";
+  ret += today.substr(8,2)+" ";
+  ret += today.substr(11,8);
+  return ret;
 
 };
 
