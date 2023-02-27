@@ -6,7 +6,7 @@
 
 sheLog::sheLogException::sheLogException(int error_code, const std::string& error_message)
     : error_code_(error_code),
-      error_message_(std::move(std::string("sheLog error["+std::to_string(error_code_)+"]"+error_message))) {
+      error_message_(std::move(std::string("sheLog error["+std::to_string(error_code_)+"]"+error_message+"\n"))) {
 };
 
 const char *sheLog::sheLogException::what() const noexcept {
