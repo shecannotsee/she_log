@@ -13,15 +13,26 @@ namespace sheLog {
 
 class logConfig {
  public:
+  logConfig();
+  ~logConfig() = default;
+  // copy
+  logConfig(const logConfig& other);
+  logConfig& operator=(const logConfig& other);
+  // move
+  logConfig(logConfig&& other) noexcept ;
+  logConfig& operator=(logConfig&& other) noexcept ;
  private:
-  log_level   level_;   ///<
-  log_format  format_;  ///<
-  log_output  output_;  ///<
+  log_level   level_;   ///< log level set
+  log_format  format_;  ///< log format set
+  log_output  output_;  ///< log output method set
  public:
-  logConfig& set_log_level(log_leve);
+  logConfig& set_log_level(log_level);
   logConfig& set_log_format(log_format);
-  logConfig& set_log_format(log_format);
-
+  logConfig& set_log_output(log_output);
+ public:
+  log_level get_log_level(log_level);
+  log_format get_log_format(log_format);
+  log_format get_log_output(log_output);
 
 };// class logConfig
 
