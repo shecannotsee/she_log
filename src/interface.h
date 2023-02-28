@@ -14,8 +14,8 @@ namespace sheLog {
 
 class interface {
  public:
-  interface();
-  ~interface();
+  explicit interface(const std::string& file_path);
+  ~interface() = default;
   // disable copy
   interface(const interface& x) = delete;
   interface& operator=(const interface& x) = delete;
@@ -30,12 +30,13 @@ class interface {
  private:
   void init();
   void consumer_thread();
+  void write(const std::string& message);
  public:
-  void TRACE(std::string log);
-  void DEBUG(std::string log);
-  void INFO(std::string log);
+  void TRACE(const std::string& log);
+  void DEBUG(const std::string& log);
+  void INFO(const std::string& log);
   void WARNING(std::string log);
-  void ERROR(std::string log);
+  void ERROR(const std::string& log);
   void FATAL(std::string log);
  public:
   void set_log_level(log_level);
