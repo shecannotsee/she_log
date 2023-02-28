@@ -10,7 +10,7 @@
 namespace m5_interface_test {
 
 int main() {
-
+  sheLog::interface p;
 
   return 0;
 };
