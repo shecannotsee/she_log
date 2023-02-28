@@ -9,8 +9,8 @@
  * 
  */
 
-#ifndef SHE_LOG_SRC_LOG_OUTPUT_METHOD_H_
-#define SHE_LOG_SRC_LOG_OUTPUT_METHOD_H_
+#ifndef SHE_LOG_SRC_LOG_OUTPUT_H_
+#define SHE_LOG_SRC_LOG_OUTPUT_H_
 
 namespace sheLog {
 
@@ -22,4 +22,4 @@ enum log_output : unsigned char {
 
 };// namespace sheLog
 
-#endif //SHE_LOG_SRC_LOG_OUTPUT_METHOD_H_
+#endif //SHE_LOG_SRC_LOG_OUTPUT_H_
