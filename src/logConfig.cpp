@@ -40,21 +40,25 @@ sheLog::logConfig &sheLog::logConfig::operator=(sheLog::logConfig &&other) noexc
 
 
 sheLog::logConfig &sheLog::logConfig::set_log_level(sheLog::log_level level) {
-  level_ = level
-  return this;
+  level_ = level;
+  return *this;
+};
+
+sheLog::logConfig &sheLog::logConfig::set_log_format(sheLog::log_format format) {
+  format_ = format;
+  return *this;
+};
+
+sheLog::logConfig &sheLog::logConfig::set_log_output(sheLog::log_output output) {
+  output_ = output;
+  return *this;
 }
-sheLog::logConfig &sheLog::logConfig::set_log_format(sheLog::log_format) {
-  return <#initializer#>;
+sheLog::log_level sheLog::logConfig::get_log_level(sheLog::log_level) const {
+  return level_;
 }
-sheLog::logConfig &sheLog::logConfig::set_log_output(sheLog::log_output) {
-  return <#initializer#>;
+sheLog::log_format sheLog::logConfig::get_log_format(sheLog::log_format) const {
+  return format_;
 }
-sheLog::log_level sheLog::logConfig::get_log_level(sheLog::log_level) {
-  return sheLog::log_level::ERROR;
-}
-sheLog::log_format sheLog::logConfig::get_log_format(sheLog::log_format) {
-  return sheLog::log_format::END;
-}
-sheLog::log_format sheLog::logConfig::get_log_output(sheLog::log_output) {
-  return sheLog::log_format::END;
+sheLog::log_format sheLog::logConfig::get_log_output(sheLog::log_output) const {
+  return output_;
 }

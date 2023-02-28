@@ -30,9 +30,9 @@ class logConfig {
   logConfig& set_log_format(log_format);
   logConfig& set_log_output(log_output);
  public:
-  log_level get_log_level(log_level);
-  log_format get_log_format(log_format);
-  log_format get_log_output(log_output);
+  log_level get_log_level(log_level) const;
+  log_format get_log_format(log_format) const;
+  log_format get_log_output(log_output) const;
 
 };// class logConfig
 
