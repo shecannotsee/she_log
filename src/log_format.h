@@ -14,7 +14,7 @@
 
 namespace sheLog {
 
-enum log_format : unsigned char {
+enum class log_format : unsigned char {
   ORIGINAL      = 0,  ///< Output original log message
   DATA_MESSAGE  = 1,  ///< Log message with time
   JSON          = 2,  ///< Convert to json output

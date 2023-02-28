@@ -14,7 +14,7 @@
 
 namespace sheLog {
 
-enum log_output : unsigned char {
+enum class log_output : unsigned char {
   STD_COUT  = 0,  ///< Use std::cout,the log message will not be persisted under this option
   IO_FOPEN  = 1,  ///< Use io/Fopen.h
   END             ///< Marks the end

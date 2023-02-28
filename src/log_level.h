@@ -14,7 +14,7 @@
 
 namespace sheLog {
 
-enum log_level : unsigned char {
+enum class log_level : unsigned char {
   ALL     = 0,  ///< Open all logs
   TRACE   = 1,  ///<
   DEBUG   = 2,  ///<
