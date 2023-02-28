@@ -27,6 +27,7 @@ class interface {
   logConfig         cfg_;
   Fopen             file_;
   MessageSafeQueue  messages_;
+  bool              run_;
  private:
   void init();
   void consumer_thread();
@@ -42,6 +43,8 @@ class interface {
   void set_log_level(log_level);
   void set_log_format(log_format);
   void set_log_output(log_output);
+ public:
+  void shutdown();
 };
 
 };// namespace sheLog

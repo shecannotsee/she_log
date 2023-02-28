@@ -14,6 +14,7 @@ int main() {
   sheLog::interface p("./log.txt");
 
   p.DEBUG(sheLog::time::get_format_time());
+  p.shutdown();
   return 0;
 };
 

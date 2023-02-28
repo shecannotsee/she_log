@@ -3,24 +3,25 @@
 //
 
 #include "interface.h"
-#include <future>
+#include <thread>
 #include <functional>
 #include <time/timeFormat.h>
 
 sheLog::interface::interface(const std::string& file_path)
     : file_(file_path.c_str()),
       cfg_(std::move(logConfig())),
-      messages_() {
+      messages_(),
+      run_(true) {
   init();
 };
 
 void sheLog::interface::init() {
-  auto run = std::bind(&interface::consumer_thread,this);
-  std::async(std::launch::async,run);
+  std::thread c = std::thread(&interface::consumer_thread,this);
+  c.detach();
 };
 
 void sheLog::interface::consumer_thread() {
-  while (true){
+  while (run_){
     file_.write(messages_.getMessage());
   }
 };
@@ -64,4 +65,8 @@ void sheLog::interface::set_log_format(sheLog::log_format format) {
 ;
 void sheLog::interface::set_log_output(sheLog::log_output output) {
   cfg_.set_log_output(output);
+};
+
+void sheLog::interface::shutdown() {
+  run_ = false;
 };
