@@ -13,14 +13,14 @@ namespace sheLog {
 class sheLogException : public std::exception {
  public:
   sheLogException(int error_code,
-              const std::string &error_message);// : m_errorCode(errorCode), m_errorMessage(errorMessage) {}
+              const std::string &error_message);
 
  private:
   int error_code_;
   std::string error_message_;
 
  public:
-  virtual const char *what() const noexcept override;// {return m_errorMessage.c_str();}
+  virtual const char *what() const noexcept override;
 
   int getErrorCode() const;// {return m_errorCode;};
 
