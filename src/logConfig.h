@@ -13,7 +13,9 @@ namespace sheLog {
 
 class logConfig {
  public:
-  logConfig();
+  logConfig(log_level level = log_level::DEBUG,
+            log_format format = log_format::DATA_MESSAGE,
+            log_output output = log_output::STD_COUT);
   ~logConfig() = default;
   // copy
   logConfig(const logConfig& other);

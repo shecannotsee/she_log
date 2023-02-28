@@ -4,10 +4,12 @@
 #include "logConfig.h"
 #include <utility>
 
-sheLog::logConfig::logConfig()
-    : level_(log_level::DEBUG),
-      format_(log_format::DATA_MESSAGE),
-      output_(log_output::STD_COUT){
+sheLog::logConfig::logConfig(log_level level,
+                             log_format format,
+                             log_output output)
+    : level_(level),
+      format_(format),
+      output_(output){
 };
 
 sheLog::logConfig::logConfig(const sheLog::logConfig &other)
