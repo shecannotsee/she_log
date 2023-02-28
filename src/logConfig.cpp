@@ -61,6 +61,6 @@ sheLog::log_level sheLog::logConfig::get_log_level(sheLog::log_level) const {
 sheLog::log_format sheLog::logConfig::get_log_format(sheLog::log_format) const {
   return format_;
 }
-sheLog::log_format sheLog::logConfig::get_log_output(sheLog::log_output) const {
+sheLog::log_output sheLog::logConfig::get_log_output(sheLog::log_output) const {
   return output_;
 }

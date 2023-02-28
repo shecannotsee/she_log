@@ -34,7 +34,7 @@ class logConfig {
  public:
   log_level get_log_level(log_level) const;
   log_format get_log_format(log_format) const;
-  log_format get_log_output(log_output) const;
+  log_output get_log_output(log_output) const;
 
 };// class logConfig
 
