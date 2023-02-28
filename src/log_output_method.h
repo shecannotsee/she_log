@@ -14,6 +14,12 @@
 
 namespace sheLog {
 
+enum log_output : unsigned char {
+  STD_COUT  = 0,  ///< Use std::cout,the log message will not be persisted under this option
+  IO_FOPEN  = 1,  ///< Use io/Fopen.h
+  END             ///< Marks the end
+};
+
 };// namespace sheLog
 
 #endif //SHE_LOG_SRC_LOG_OUTPUT_METHOD_H_
