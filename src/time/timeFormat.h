@@ -42,10 +42,7 @@ std::string get_format_time() {
   ret += Supplement_0(local_time.tm_hour )+":";
   ret += Supplement_0(local_time.tm_min )+":";
   ret += Supplement_0(local_time.tm_sec );
-
-
   return ret;
-
 };
 
 };// namespace time
