@@ -14,6 +14,12 @@
 
 namespace sheLog {
 
+enum log_storage : unsigned char {
+  LOG_FILE  = 0,  ///< The log will be written to the specified log file
+  DATA_BASE = 1,  ///< The log will be written to the database
+  END             ///< Marks the end
+};
+
 };// namespace sheLog
 
 #endif //SHE_LOG_SRC_LOG_STORAGE_METHOD_H_
