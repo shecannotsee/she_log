@@ -31,7 +31,6 @@ class interface {
   bool              run_;
   std::thread       get_thread_;
  private:
-  void init();
   void consumer_thread();
   void write(const std::string& message);
  public:

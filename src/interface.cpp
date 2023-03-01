@@ -11,18 +11,13 @@ sheLog::interface::interface(const std::string& file_path)
     : file_(file_path.c_str()),
       cfg_(std::move(logConfig())),
       messages_(),
-      run_(true) {
-  init();
+      run_(true),
+      get_thread_(&interface::consumer_thread,this) {
 };
 
 sheLog::interface::~interface() {
   run_ = false;
   get_thread_.join();
-};
-
-
-void sheLog::interface::init() {
-  get_thread_ = std::thread(&interface::consumer_thread,this);
 };
 
 void sheLog::interface::consumer_thread() {
