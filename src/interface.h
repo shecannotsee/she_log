@@ -6,6 +6,7 @@
 #define SHE_LOG_SRC_INTERFACE_H_
 
 #include <string>
+#include <thread>
 #include <logConfig.h>
 #include <io/Fopen.h>
 #include <buffer/MessageSafeQueue.h>
@@ -15,7 +16,7 @@ namespace sheLog {
 class interface {
  public:
   explicit interface(const std::string& file_path);
-  ~interface() = default;
+  ~interface();
   // disable copy
   interface(const interface& x) = delete;
   interface& operator=(const interface& x) = delete;
@@ -28,6 +29,7 @@ class interface {
   Fopen             file_;
   MessageSafeQueue  messages_;
   bool              run_;
+  std::thread       get_thread_;
  private:
   void init();
   void consumer_thread();

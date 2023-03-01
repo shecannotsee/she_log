@@ -15,9 +15,14 @@ sheLog::interface::interface(const std::string& file_path)
   init();
 };
 
+sheLog::interface::~interface() {
+  run_ = false;
+  get_thread_.join();
+};
+
+
 void sheLog::interface::init() {
-  std::thread c = std::thread(&interface::consumer_thread,this);
-  c.detach();
+  get_thread_ = std::thread(&interface::consumer_thread,this);
 };
 
 void sheLog::interface::consumer_thread() {
