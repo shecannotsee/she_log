@@ -7,14 +7,16 @@ set(CMAKE_CXX_FLAGS "-g")# 断点无效处理方案
 project(${PROJECT_NAME})
 
 # set
+set(she_log ${CMAKE_SOURCE_DIR}/she_log)
 
 # include
-include_directories()
+include_directories(${she_log}/include)
 # lib
-link_directories()
+link_directories(${she_log}/lib)
 
 file(GLOB_RECURSE SRC "${CMAKE_SOURCE_DIR}/example.cpp")
 add_executable(${PROJECT_NAME} ${SRC})
 
 # 链接库
-target_link_libraries(${PROJECT_NAME} "-pthread")
+target_link_libraries(${PROJECT_NAME} "-pthread"
+        she_log)
