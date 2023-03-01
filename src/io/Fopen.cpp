@@ -19,7 +19,7 @@ sheLog::Fopen::~Fopen() {
   file_ = nullptr;
 }
 void sheLog::Fopen::write(const std::string& content) {
-  if(EOF == fputs(content.c_str(),file_)) {
+  if(EOF == fputs(std::string(content+"\n").c_str(),file_)) {
     std::string error_message = "Failed to write to file("+file_name_+") with fputs.";
     throw sheLogException(2,"Failed to write to file with fputs.");
   };
