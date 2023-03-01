@@ -81,9 +81,34 @@ install(TARGETS
 # To use make install to build library
 # install include
 install(FILES
-        ${CMAKE_SOURCE_DIR}/src/sheBase64.h # source head
+        ${CMAKE_SOURCE_DIR}/src/interface.h
+        ${CMAKE_SOURCE_DIR}/src/log_format.h
+        ${CMAKE_SOURCE_DIR}/src/log_level.h
+        ${CMAKE_SOURCE_DIR}/src/log_output.h
+        ${CMAKE_SOURCE_DIR}/src/logConfig.h
+        ${CMAKE_SOURCE_DIR}/src/make_unique.h
         DESTINATION # to
         ${PROJECT_NAME}/include # target dir
+        )
+install(FILES
+        ${CMAKE_SOURCE_DIR}/src/buffer/MessageSafeQueue.h
+        DESTINATION # to
+        ${PROJECT_NAME}/include/buffer # target dir
+        )
+install(FILES
+        ${CMAKE_SOURCE_DIR}/src/io/Fopen.h
+        DESTINATION # to
+        ${PROJECT_NAME}/include/io # target dir
+        )
+install(FILES
+        ${CMAKE_SOURCE_DIR}/src/sheLogException/sheLogException.h
+        DESTINATION # to
+        ${PROJECT_NAME}/include/sheLogException # target dir
+        )
+install(FILES
+        ${CMAKE_SOURCE_DIR}/src/time/timeFormat.h
+        DESTINATION # to
+        ${PROJECT_NAME}/include/time # target dir
         )
 # install lib
 install(TARGETS
