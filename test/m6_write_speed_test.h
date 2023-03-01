@@ -12,13 +12,22 @@
 namespace m6_write_speed_test {
 
 int main() {
-  sheLog::interface p("./log.txt");
-
-  auto start_time = std::chrono::steady_clock::now(); // 获取当前的时间点
-
-  while (std::chrono::steady_clock::now() - start_time < std::chrono::seconds(1)) {
-    p.DEBUG(sheLog::time::get_format_time());
+  /* interface test */ {
+    sheLog::interface p("./log_interface.txt");
+    auto start_time = std::chrono::steady_clock::now(); // 获取当前的时间点
+    while (std::chrono::steady_clock::now() - start_time < std::chrono::seconds(10)) {
+      p.DEBUG(sheLog::time::get_format_time());
+    };
   };
+  /* fopen test */ {
+    sheLog::Fopen p("./log_fopen.txt");
+    auto start_time = std::chrono::steady_clock::now(); // 获取当前的时间点
+    while (std::chrono::steady_clock::now() - start_time < std::chrono::seconds(10)) {
+      p.write(sheLog::time::get_format_time());
+    };
+  };
+
+  /* test result:The writing method using producer consumer mode is 22% faster than direct writing */
 
   return 0;
 };
