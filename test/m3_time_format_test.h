@@ -12,6 +12,9 @@ namespace m3_time_format_test {
 int main() {
   std::string time = sheLog::time::get_format_time();
   std::cout<<time<<std::endl;
+  while (1) {
+    std::cout<<sheLog::time::get_format_time()<<std::endl;
+  };
   return 0;
 };
 

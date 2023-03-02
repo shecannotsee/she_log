@@ -24,6 +24,7 @@ class time {
    * 
    */
   static std::string Supplement_0(int param);
+  static std::string Supplement_0(double param);
   /**
    * @brief Get the formatted date, for example:
    * 1999-01-01 00:00:00
