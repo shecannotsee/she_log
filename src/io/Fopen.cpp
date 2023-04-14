@@ -19,10 +19,17 @@ sheLog::Fopen::~Fopen() {
   file_ = nullptr;
 }
 void sheLog::Fopen::write(const std::string& content) {
+  // 设置写缓冲大小为0
+  setbuf(file_, NULL);
+
   if(EOF == fputs(std::string(content+"\n").c_str(),file_)) {
     std::string error_message = "Failed to write to file("+file_name_+") with fputs.";
     throw sheLogException(2,"Failed to write to file with fputs.");
   };
+  // 将缓冲区的数据立即写入文件
+  if (fflush(file_) != 0) {
+    // handle error
+  }
 };
 
 
