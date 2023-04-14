@@ -18,7 +18,7 @@ std::string sheLog::MessageSafeQueue::getMessage() {
   while (queue_.empty()) {
     condition_variable_.wait(lock);
   }
-  std::string message = queue_.front();
+  std::string message = std::string(queue_.front());
   queue_.pop();
   return message;
 };
