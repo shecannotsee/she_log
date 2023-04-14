@@ -7,6 +7,7 @@
 
 #include <string>
 #include <thread>
+#include <atomic>
 #include <logConfig.h>
 #include <io/Fopen.h>
 #include <buffer/MessageSafeQueue.h>
@@ -28,7 +29,7 @@ class interface {
   logConfig         cfg_;
   Fopen             file_;
   MessageSafeQueue  messages_;
-  bool              run_;
+  std::atomic<bool> run_;
   std::thread       get_thread_;
  private:
   void consumer_thread();
