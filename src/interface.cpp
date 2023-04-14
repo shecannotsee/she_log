@@ -17,7 +17,11 @@ sheLog::interface::interface(const std::string& file_path)
 
 sheLog::interface::~interface() {
   run_ = false;
-  get_thread_.join();
+  if (get_thread_.joinable()) {
+    // 为了防止写队列在析构时候没有数据的空等
+    this->TRACE("LOG QUIT");
+    get_thread_.join();
+  }
 };
 
 void sheLog::interface::consumer_thread() {
