@@ -23,7 +23,7 @@ example.cpp
 int main() {
   std::cout<<"example test start.\n";
 
-  sheLog::interface p_log("log.txt");
+  she_log::interface p_log("log.txt");
   p_log.DEBUG("hi");
 
   std::cout<<"Done.\n";
@@ -36,7 +36,7 @@ int main() {
 # Getting the Source
 
 ```shell
-git clone https://github.com/shecannotsee/sheLog.git
+git clone https://github.com/shecannotsee/she_log.git
 ```
 
 
@@ -48,9 +48,9 @@ This project supports [CMake](https://cmake.org/) out of the box.
 ### Build for Linux or Mac
 
 ```shell
-# now you are in the directory ${path}/sheThreadPool
+# now you are in the directory ${path}/she_log
 ➜ pwd
-${path}/sheLog
+${path}/she_log
 ➜ mkdir build
 ➜ cd build
 ➜ cmake ..

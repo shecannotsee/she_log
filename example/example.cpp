@@ -8,7 +8,7 @@
 int main() {
   std::cout<<"example test start.\n";
 
-  sheLog::interface p_log("log.txt");
+  she_log::interface p_log("log.txt");
   p_log.DEBUG("hi");
 
   std::cout<<"Done.\n";
