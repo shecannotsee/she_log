@@ -11,7 +11,7 @@ namespace m7_async_write_real_time_test {
 
 void main() {
   try {
-    sheLog::interface log1("./a.log");
+    she_log::interface log1("./a.log");
     for (int i = 0; i < 10; ++i) {
       log1.DEBUG("test");
       sleep(1);

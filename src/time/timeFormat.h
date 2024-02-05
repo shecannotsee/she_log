@@ -9,7 +9,7 @@
 #include <tuple>
 #include <map>
 
-namespace sheLog {
+namespace she_log {
 
 class time {
  public:

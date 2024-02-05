@@ -12,7 +12,7 @@
 namespace m2_Fopen_test {
 
 int main () {
-  sheLog::Fopen file("io_test.txt");
+  she_log::Fopen file("io_test.txt");
   std::string content1 = "2023-02-27 18:49:55 [INFO]The first log.\n";
   file.write(content1);
   std::string content2 = "2023-02-27 18:49:58 [INFO]The second log.\n";

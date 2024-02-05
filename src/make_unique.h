@@ -7,7 +7,7 @@
 
 #include <memory>
 
-namespace sheLog {
+namespace she_log {
 
 namespace CPP11 {
 

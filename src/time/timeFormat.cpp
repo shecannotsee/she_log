@@ -3,14 +3,14 @@
 //
 #include "timeFormat.h"
 
-sheLog::time::ms_us sheLog::time::get_ms_us() {
+she_log::time::ms_us she_log::time::get_ms_us() {
   auto now = std::chrono::system_clock::now();
   return std::make_pair(std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000,
                         std::chrono::duration_cast<std::chrono::microseconds>(now.time_since_epoch()) % 1000);
 };
 
 
-std::string sheLog::time::Supplement_0(int param) {
+std::string she_log::time::Supplement_0(int param) {
   if (param>=0&&param<=9) {
     return "0" + std::to_string(param);
   } else {
@@ -18,12 +18,12 @@ std::string sheLog::time::Supplement_0(int param) {
   }
 };
 
-std::string sheLog::time::Supplement_0(double param) {
+std::string she_log::time::Supplement_0(double param) {
   std::string ret = std::to_string(param);
   return std::string(ret.begin()+2,ret.end());
 };
 
-std::string sheLog::time::get_format_time() {
+std::string she_log::time::get_format_time() {
   auto now = std::chrono::system_clock::now();
   // 将时间点转换为 time_t 类型
   std::time_t t = std::chrono::system_clock::to_time_t(now);

@@ -5,7 +5,7 @@
 #include "MessageSafeQueue.h"
 #include <sheLogException/sheLogException.h>
 
-void sheLog::MessageSafeQueue::addMessage(const std::string &message) {
+void she_log::MessageSafeQueue::addMessage(const std::string &message) {
   std::unique_lock<std::mutex> lock(mutex_);
   queue_.push(message);
   lock.unlock();
@@ -13,7 +13,7 @@ void sheLog::MessageSafeQueue::addMessage(const std::string &message) {
 };
 
 
-std::string sheLog::MessageSafeQueue::getMessage() {
+std::string she_log::MessageSafeQueue::getMessage() {
   std::unique_lock<std::mutex> lock(mutex_);
   while (queue_.empty()) {
     condition_variable_.wait(lock);

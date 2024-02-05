@@ -12,7 +12,7 @@
 namespace m4_queue_test {
 
 int main() {
-  sheLog::MessageSafeQueue message_queue;
+  she_log::MessageSafeQueue message_queue;
 
   // 生产者线程
   std::thread producer([&message_queue]() {

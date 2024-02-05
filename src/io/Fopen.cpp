@@ -5,7 +5,7 @@
 #include "Fopen.h"
 #include <sheLogException/sheLogException.h>
 
-sheLog::Fopen::Fopen(const char *filename, const char *mode)
+she_log::Fopen::Fopen(const char *filename, const char *mode)
     : file_name_(std::move(std::string(filename))),
       file_(fopen(filename,mode)) {
   if (file_==NULL) {
@@ -14,11 +14,11 @@ sheLog::Fopen::Fopen(const char *filename, const char *mode)
   }
 };
 
-sheLog::Fopen::~Fopen() {
+she_log::Fopen::~Fopen() {
   fclose(file_);
   file_ = nullptr;
 }
-void sheLog::Fopen::write(const std::string& content) {
+void she_log::Fopen::write(const std::string& content) {
   // 设置写缓冲大小为0
   setbuf(file_, NULL);
 

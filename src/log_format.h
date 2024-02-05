@@ -12,7 +12,7 @@
 #ifndef SHE_LOG_SRC_LOG_FORMAT_H_
 #define SHE_LOG_SRC_LOG_FORMAT_H_
 
-namespace sheLog {
+namespace she_log {
 
 enum class log_format : unsigned char {
   ORIGINAL      = 0,  ///< Output original log message

@@ -11,14 +11,14 @@ namespace m1_she_log_exception_test {
 
 void myFunction() {
   // some code that might throw an sheLogException
-  throw sheLog::sheLogException(42, "An error occurred.");
+  throw she_log::sheLogException(42, "An error occurred.");
 }
 
 int main() {
 
   try {
     myFunction();
-  } catch (const sheLog::sheLogException& exc) {
+  } catch (const she_log::sheLogException& exc) {
     std::cerr<<exc.what();
   };
 

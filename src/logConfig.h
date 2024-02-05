@@ -9,7 +9,7 @@
 #include <log_format.h>
 #include <log_output.h>
 
-namespace sheLog {
+namespace she_log {
 
 class logConfig {
  public:

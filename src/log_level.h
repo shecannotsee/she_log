@@ -12,7 +12,7 @@
 #ifndef SHELOG_SRC_LOG_LEVEL_H_
 #define SHELOG_SRC_LOG_LEVEL_H_
 
-namespace sheLog {
+namespace she_log {
 
 enum class log_level : unsigned char {
   ALL     = 0,  ///< Open all logs

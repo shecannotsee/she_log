@@ -10,8 +10,8 @@
 namespace m5_interface_test {
 
 int main() {
-  sheLog::interface p("./log.txt");
-  p.DEBUG(sheLog::time::get_format_time());
+  she_log::interface p("./log.txt");
+  p.DEBUG(she_log::time::get_format_time());
   return 0;
 };
 

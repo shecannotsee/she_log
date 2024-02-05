@@ -12,7 +12,7 @@
 #ifndef SHE_LOG_SRC_LOG_OUTPUT_H_
 #define SHE_LOG_SRC_LOG_OUTPUT_H_
 
-namespace sheLog {
+namespace she_log {
 
 enum class log_output : unsigned char {
   STD_COUT  = 0,  ///< Use std::cout,the log message will not be persisted under this option

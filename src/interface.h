@@ -12,7 +12,7 @@
 #include <io/Fopen.h>
 #include <buffer/MessageSafeQueue.h>
 
-namespace sheLog {
+namespace she_log {
 
 class interface {
  public:

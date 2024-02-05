@@ -4,7 +4,7 @@
 #include "logConfig.h"
 #include <utility>
 
-sheLog::logConfig::logConfig(log_level level,
+she_log::logConfig::logConfig(log_level level,
                              log_format format,
                              log_output output)
     : level_(level),
@@ -12,26 +12,26 @@ sheLog::logConfig::logConfig(log_level level,
       output_(output){
 };
 
-sheLog::logConfig::logConfig(const sheLog::logConfig &other)
+she_log::logConfig::logConfig(const she_log::logConfig &other)
     : level_(other.level_),
       format_(other.format_),
       output_(other.output_) {
 };
 
-sheLog::logConfig &sheLog::logConfig::operator=(const sheLog::logConfig &other) {
+she_log::logConfig &she_log::logConfig::operator=(const she_log::logConfig &other) {
   level_ = other.level_;
   format_ = other.format_;
   output_ = other.output_;
   return *this;
 }
 
-sheLog::logConfig::logConfig(sheLog::logConfig && other) noexcept
+she_log::logConfig::logConfig(she_log::logConfig && other) noexcept
     : level_(other.level_),
       format_(other.format_),
       output_(other.output_){
 };
 
-sheLog::logConfig &sheLog::logConfig::operator=(sheLog::logConfig &&other) noexcept {
+she_log::logConfig &she_log::logConfig::operator=(she_log::logConfig &&other) noexcept {
   if (this != &other) {
     level_ = other.level_;
     format_ = other.format_;
@@ -41,26 +41,26 @@ sheLog::logConfig &sheLog::logConfig::operator=(sheLog::logConfig &&other) noexc
 };
 
 
-sheLog::logConfig &sheLog::logConfig::set_log_level(sheLog::log_level level) {
+she_log::logConfig &she_log::logConfig::set_log_level(she_log::log_level level) {
   level_ = level;
   return *this;
 };
 
-sheLog::logConfig &sheLog::logConfig::set_log_format(sheLog::log_format format) {
+she_log::logConfig &she_log::logConfig::set_log_format(she_log::log_format format) {
   format_ = format;
   return *this;
 };
 
-sheLog::logConfig &sheLog::logConfig::set_log_output(sheLog::log_output output) {
+she_log::logConfig &she_log::logConfig::set_log_output(she_log::log_output output) {
   output_ = output;
   return *this;
 }
-sheLog::log_level sheLog::logConfig::get_log_level(sheLog::log_level) const {
+she_log::log_level she_log::logConfig::get_log_level(she_log::log_level) const {
   return level_;
 }
-sheLog::log_format sheLog::logConfig::get_log_format(sheLog::log_format) const {
+she_log::log_format she_log::logConfig::get_log_format(she_log::log_format) const {
   return format_;
 }
-sheLog::log_output sheLog::logConfig::get_log_output(sheLog::log_output) const {
+she_log::log_output she_log::logConfig::get_log_output(she_log::log_output) const {
   return output_;
 }

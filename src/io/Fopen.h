@@ -9,7 +9,7 @@
 #include <memory>
 #include <make_unique.h>
 
-namespace sheLog {
+namespace she_log {
 
 class Fopen {
  public:

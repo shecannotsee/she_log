@@ -10,7 +10,7 @@
 #include <mutex>
 #include <condition_variable>
 
-namespace sheLog {
+namespace she_log {
 
 class MessageSafeQueue {
  public:

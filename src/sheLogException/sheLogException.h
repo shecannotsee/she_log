@@ -8,7 +8,7 @@
 #include <exception>
 #include <string>
 
-namespace sheLog {
+namespace she_log {
 
 class sheLogException : public std::exception {
  public:
