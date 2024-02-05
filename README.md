@@ -1,4 +1,4 @@
-sheLog is a  fast C++ logging library based on c++11.
+she_log is a fast C++ logging library based on c++11.
 
 Authors: shecannotsee (shecannotsee@163.com)
 
