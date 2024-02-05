@@ -2,6 +2,7 @@
 // Created by shecannotsee on 2023/2/27.
 //
 #include <iostream>
+#include "interface.h"
 
 #include "m1_she_log_exception_test.h"
 #include "m2_Fopen_test.h"
