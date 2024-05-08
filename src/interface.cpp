@@ -36,27 +36,27 @@ void she_log::interface::write(const std::string& message) {
 
 
 void she_log::interface::TRACE(const std::string& log) {
-  this->write(she_log::time::get_now() + "[TRACE]" + log);
+  this->write(she_log::detail::time::get_now() + "[TRACE]" + log);
 };
 
 void she_log::interface::DEBUG(const std::string& log) {
-  this->write(she_log::time::get_now() + "[DEBUG]" + log);
+  this->write(she_log::detail::time::get_now() + "[DEBUG]" + log);
 };
 
 void she_log::interface::INFO(const std::string& log) {
-  this->write(she_log::time::get_now() + "[INFO]" + log);
+  this->write(she_log::detail::time::get_now() + "[INFO]" + log);
 };
 
 void she_log::interface::WARNING(std::string log) {
-  this->write(she_log::time::get_now() + "[WARNING]" + log);
+  this->write(she_log::detail::time::get_now() + "[WARNING]" + log);
 };
 
 void she_log::interface::ERROR(const std::string& log) {
-  this->write(she_log::time::get_now() + "[ERROR]" + log);
+  this->write(she_log::detail::time::get_now() + "[ERROR]" + log);
 };
 
 void she_log::interface::FATAL(std::string log) {
-  this->write(she_log::time::get_now() + "[FATAL]" + log);
+  this->write(she_log::detail::time::get_now() + "[FATAL]" + log);
 };
 
 void she_log::interface::set_log_level(she_log::log_level level) {

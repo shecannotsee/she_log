@@ -9,6 +9,8 @@
 #include <string>
 
 namespace she_log {
+namespace detail {
+
 class time {
  public:
   /**
@@ -18,6 +20,8 @@ class time {
    */
   static std::string get_now(bool include_microseconds = false);
 };
+}  // namespace detail
+
 }  // namespace she_log
 
 #endif  // SHE_LOG_COMMON_TIME_H

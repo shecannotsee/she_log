@@ -7,8 +7,10 @@
 #include <iomanip>
 #include <sstream>
 
+namespace she_log {
+namespace detail {
 
-std::string she_log::time::get_now(bool include_microseconds) {
+std::string time::get_now(bool include_microseconds) {
   // Get the current time point
   const auto now = std::chrono::system_clock::now();
   // Convert the current point in time to a timestamp
@@ -33,3 +35,6 @@ std::string she_log::time::get_now(bool include_microseconds) {
 
   return ss.str();
 }
+
+}  // namespace detail
+}  // namespace she_log
