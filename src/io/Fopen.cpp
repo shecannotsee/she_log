@@ -3,14 +3,14 @@
 //
 
 #include "Fopen.h"
-#include <sheLogException/sheLogException.h>
+#include <exception/exception.h>
 
 she_log::Fopen::Fopen(const char *filename, const char *mode)
     : file_name_(std::move(std::string(filename))),
       file_(fopen(filename,mode)) {
   if (file_==NULL) {
     std::string error_message = "Open file("+file_name_+") failed.";
-    throw sheLogException(1,error_message);
+    throw exception(1,error_message);
   }
 };
 
@@ -24,7 +24,7 @@ void she_log::Fopen::write(const std::string& content) {
 
   if(EOF == fputs(std::string(content+"\n").c_str(),file_)) {
     std::string error_message = "Failed to write to file("+file_name_+") with fputs.";
-    throw sheLogException(2,"Failed to write to file with fputs.");
+    throw exception(2,"Failed to write to file with fputs.");
   };
   // 将缓冲区的数据立即写入文件
   if (fflush(file_) != 0) {

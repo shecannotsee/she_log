@@ -10,9 +10,9 @@
 
 namespace she_log {
 
-class sheLogException : public std::exception {
+class exception : public std::exception {
  public:
-  sheLogException(int error_code,
+  exception(int error_code,
               const std::string &error_message);
 
  private:
@@ -22,7 +22,7 @@ class sheLogException : public std::exception {
  public:
   virtual const char *what() const noexcept override;
 
-  int getErrorCode() const;// {return m_errorCode;};
+  int get_error_code() const;// {return m_errorCode;};
 
 };// class sheLogException
 
