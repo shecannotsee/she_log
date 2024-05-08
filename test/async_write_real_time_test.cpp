@@ -13,4 +13,6 @@ SHE_TEST(unit_test, async_write_real_time_test) {
   } catch (const std::exception& exc) {
     std::cout << exc.what() << std::endl;
   }
+
+  return true;
 }
