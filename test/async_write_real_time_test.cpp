@@ -1,5 +1,4 @@
 #include <she_test.h>
-#include <unistd.h>
 
 #include <interface.h>
 
