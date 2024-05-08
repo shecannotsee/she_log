@@ -3,7 +3,7 @@
 //
 
 #include "Fopen.h"
-#include <exception/exception.h>
+#include <common/exception/exception.h>
 
 she_log::Fopen::Fopen(const char *filename, const char *mode)
     : file_name_(std::move(std::string(filename))),

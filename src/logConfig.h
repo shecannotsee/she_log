@@ -5,9 +5,9 @@
 #ifndef SHE_LOG_SRC_LOGCONFIG_H_
 #define SHE_LOG_SRC_LOGCONFIG_H_
 
-#include <log_level.h>
-#include <log_format.h>
-#include <log_output.h>
+#include <filter/log_level.h>
+#include <format/log_format.h>
+#include "output/log_output.h"
 
 namespace she_log {
 

@@ -3,7 +3,7 @@
 //
 
 #include "MessageSafeQueue.h"
-#include <exception/exception.h>
+#include <common/exception/exception.h>
 
 void she_log::MessageSafeQueue::addMessage(const std::string &message) {
   std::unique_lock<std::mutex> lock(mutex_);

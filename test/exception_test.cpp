@@ -1,5 +1,5 @@
 #include <she_test.h>
-#include <exception/exception.h>
+#include <common/exception/exception.h>
 
 namespace {
 void my_function() {

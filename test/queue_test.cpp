@@ -2,7 +2,7 @@
 
 #include <chrono>
 #include <thread>
-#include <buffer/MessageSafeQueue.h>
+#include <logger/buffer/MessageSafeQueue.h>
 
 
 SHE_TEST(unit_test, queue_test) {

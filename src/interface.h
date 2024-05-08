@@ -9,8 +9,8 @@
 #include <thread>
 #include <atomic>
 #include <logConfig.h>
-#include <io/Fopen.h>
-#include <buffer/MessageSafeQueue.h>
+#include <output/Fopen.h>
+#include <logger/buffer/MessageSafeQueue.h>
 
 namespace she_log {
 
