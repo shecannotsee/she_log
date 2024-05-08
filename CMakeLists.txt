@@ -1,120 +1,32 @@
-########################################################################################################################
-cmake_minimum_required(VERSION 3.10)
 
-set(CMAKE_CXX_STANDARD 11) #
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "-g")# to deal clion debug invalid
-
-set(PROJECT_NAME "she_log" VERSION 0.0.1)
-set(CMAKE_BUILD_TYPE "RELEASE") # Release or Debug or MinSizeRel
-project(${PROJECT_NAME})
+cmake_minimum_required(VERSION 3.11)
 
 ########################################################################################################################
-set(unit_test "ON")
-set(library "ON")
+# Project Settings                                                                                                     #
+########################################################################################################################
 
-# test set
-if (unit_test STREQUAL "ON")
-    set(unit_test_name "${PROJECT_NAME}_test")
-else()
-    message(STATUS "CMakeLists.txt error")
-endif ()
+set(project_name "she_log")
+PROJECT(${project_name}
+        VERSION      0.0.1
+        LANGUAGES    CXX
+        )
 
-# lib set
-if (library STREQUAL "ON")
-    set(library_static_name "${PROJECT_NAME}_static")
-    set(library_dynamic_name "${PROJECT_NAME}_dynamic")
-else()
-    message(STATUS "CMakeLists.txt error")
-endif ()
-#message(STATUS "${unit_test_name}")
-#message(STATUS "${library_static_name}")
-#message(STATUS "${library_dynamic_name}")
+# [Release] or [Debug] or [MinSizeRel]
+set(compilation_options "Debug")
+
+set(library_static_name "${project_name}_static")
+set(library_dynamic_name "${project_name}_dynamic")
 
 ########################################################################################################################
-# set path
-
+# include                                                                                                              #
 ########################################################################################################################
-# include
-include_directories(${CMAKE_SOURCE_DIR}/src)
-# lib
-link_directories()
 
-########################################################################################################################
-file(GLOB_RECURSE SRC "${CMAKE_SOURCE_DIR}/src/*")
-# test target
-if (unit_test STREQUAL "ON")
-    file(GLOB_RECURSE TEST_SRC "${CMAKE_SOURCE_DIR}/test/*")
-    add_executable(${unit_test_name} ${TEST_SRC} ${SRC})
-    target_link_libraries(${unit_test_name} "-pthread")
-else()
-    message(STATUS "CMakeLists.txt error")
-endif ()
-
-# lib target
-if (library STREQUAL "ON")
-    add_library(${library_static_name} STATIC ${SRC})
-    # Rename the generated static library
-    set_target_properties(${library_static_name} PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
-    add_library(${library_dynamic_name} SHARED ${SRC})
-    # Rename the generated dynamic library
-    set_target_properties(${library_dynamic_name} PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
-else()
-    message(STATUS "CMakeLists.txt error")
-endif ()
-
-########################################################################################################################
-# local debug
-set(CMAKE_INSTALL_PREFIX "./")
-# Release Code
-#set(CMAKE_INSTALL_PREFIX "/")
-
-message(STATUS "The default installation path is ${CMAKE_INSTALL_PREFIX}")
-message(STATUS "Please use \"make install DESTDIR=./PATH\" to set install path")
-
-install(TARGETS
-        ${unit_test_name}
-        DESTINATION
-        ${PROJECT_NAME}/bin
-        )
-
-# To use make install to build library
-# install include
-install(FILES
-        ${CMAKE_SOURCE_DIR}/src/interface.h
-        ${CMAKE_SOURCE_DIR}/src/log_format.h
-        ${CMAKE_SOURCE_DIR}/src/log_level.h
-        ${CMAKE_SOURCE_DIR}/src/log_output.h
-        ${CMAKE_SOURCE_DIR}/src/logConfig.h
-        ${CMAKE_SOURCE_DIR}/src/make_unique.h
-        DESTINATION # to
-        ${PROJECT_NAME}/include # target dir
-        )
-install(FILES
-        ${CMAKE_SOURCE_DIR}/src/buffer/MessageSafeQueue.h
-        DESTINATION # to
-        ${PROJECT_NAME}/include/buffer # target dir
-        )
-install(FILES
-        ${CMAKE_SOURCE_DIR}/src/io/Fopen.h
-        DESTINATION # to
-        ${PROJECT_NAME}/include/io # target dir
-        )
-install(FILES
-        ${CMAKE_SOURCE_DIR}/src/sheLogException/sheLogException.h
-        DESTINATION # to
-        ${PROJECT_NAME}/include/sheLogException # target dir
-        )
-install(FILES
-        ${CMAKE_SOURCE_DIR}/src/time/timeFormat.h
-        DESTINATION # to
-        ${PROJECT_NAME}/include/time # target dir
-        )
-# install lib
-install(TARGETS
-        ${library_static_name} ${library_dynamic_name}
-        DESTINATION
-        ${PROJECT_NAME}/lib
-        )
+include(${CMAKE_SOURCE_DIR}/cmake/compilation_options.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/config.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/import.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/src_build.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/target_exec.cmake )
+include(${CMAKE_SOURCE_DIR}/cmake/target_test.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/z_install.cmake)
 
 
