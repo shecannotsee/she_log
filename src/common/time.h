@@ -12,11 +12,6 @@ namespace she_log {
 class time {
  public:
   /**
-   * @brief Get the formatted date, for example:
-   * 1999-01-01 00:00:00.000
-   */
-
-  /**
    * @brief Get the formatted date, for example:1999-01-01 00:00:00.000
    * @param include_microseconds Do you need to include microseconds?
    * @return date string
