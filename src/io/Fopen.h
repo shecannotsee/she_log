@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <memory>
 #include <make_unique.h>
+#include <string>
 
 namespace she_log {
 
