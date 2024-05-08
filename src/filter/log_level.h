@@ -11,6 +11,7 @@
 
 #ifndef SHELOG_SRC_LOG_LEVEL_H_
 #define SHELOG_SRC_LOG_LEVEL_H_
+#include <vector>
 
 namespace she_log {
 

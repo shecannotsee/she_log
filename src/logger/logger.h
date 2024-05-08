@@ -2,24 +2,20 @@
 #define SHE_LOG_LOGGER_LOGGER_H
 
 #include <chrono>
+#include <functional>
 #include <string>
 #include <thread>
 
 #include "filter/log_level.h"
 #include "log_channel.h"
 
-struct log_info {
-  she_log::log_level level;
-  std::chrono::time_point<std::chrono::system_clock> time_point;
-  std::string message;
-};
-
 namespace she_log {
 
 class logger {
  public:
-  logger() {
-    process_thread_ = std::thread([this]() { buffer_.process_logs(); });
+  explicit logger(std::function<void(log_info)> process_func) {
+    process_thread_ = std::thread(
+        [this, &process_func]() { buffer_.process_logs(std::forward<std::function<void(log_info)>>(process_func)); });
   };
   ~logger() {
     buffer_.stop();

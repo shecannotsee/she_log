@@ -7,6 +7,12 @@
 
 namespace she_log {
 
+struct log_info {
+  log_level level;
+  std::chrono::time_point<std::chrono::system_clock> time_point;
+  std::string message;
+};
+
 /**
  * @brief
  * @tparam T queue data structure
@@ -31,7 +37,7 @@ class log_channel {
     cv.notify_one();  // 通知等待中的线程有新的日志可用
   }
 
-  void process_logs() {
+  void process_logs(const std::function<void(log_info)>& process_func) {
     while (true) {
       std::unique_lock<std::mutex> lock(mutex);
       cv.wait(lock, [this]() { return !log_queue.empty() || stop_requested; });
@@ -44,7 +50,9 @@ class log_channel {
       lock.unlock();
 
       // process log_info
-      printf("Processed log:%s\n", log.message.c_str());
+      if (process_func != nullptr) {
+        process_func(log);
+      }
     }
   }
 
