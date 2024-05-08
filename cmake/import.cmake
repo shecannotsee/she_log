@@ -4,10 +4,9 @@
 ########################################################################################################################
 
 # include
-include_directories(${CMAKE_SOURCE_DIR}/third_party/googletest/include)
+include_directories(${CMAKE_SOURCE_DIR}/third_party/she_test/include)
 
 # lib
-link_directories(${CMAKE_SOURCE_DIR}/third_party/googletest/lib)
 
 # Internal project
 include_directories(${CMAKE_SOURCE_DIR}/src)
