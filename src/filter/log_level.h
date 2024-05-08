@@ -26,7 +26,26 @@ enum class log_level : unsigned char {
   OFF     = 7   ///< Close all logs
 };
 
-namespace detail {}
+namespace detail {
+static std::string level_to_str(const log_level level) {
+  switch (level) {
+    case log_level::TRACE:
+      return "TRACE";
+    case log_level::DEBUG:
+      return "DEBUG";
+    case log_level::INFO:
+      return "INFO";
+    case log_level::WARNING:
+      return "WARN";
+    case log_level::ERROR:
+      return "ERROR";
+    case log_level::FATAL:
+      return "FATAL";
+    default:
+      return "UNKNOWN";
+  }
+}
+}  // namespace detail
 
 };  // namespace she_log
 
