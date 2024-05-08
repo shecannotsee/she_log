@@ -1,17 +1,11 @@
-//
-// Created by shecannotsee on 2023/2/28.
-//
-
-#ifndef SHE_LOG_TEST_M4_QUEUE_TEST_H_
-#define SHE_LOG_TEST_M4_QUEUE_TEST_H_
+#include <she_test.h>
 
 #include <chrono>
 #include <thread>
 #include <buffer/MessageSafeQueue.h>
 
-namespace m4_queue_test {
 
-int main() {
+SHE_TEST(unit_test, queue_test) {
   she_log::MessageSafeQueue message_queue;
 
   // 生产者线程
@@ -19,7 +13,7 @@ int main() {
     for (int i = 0; i < 10; i++) {
       std::string message = "Message " + std::to_string(i);
       message_queue.addMessage(message);
-      std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+      std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
   });
 
@@ -34,9 +28,5 @@ int main() {
   producer.join();
   consumer.join();
 
-  return 0;
-};
-
-};// namespace m4_queue_test
-
-#endif //SHE_LOG_TEST_M4_QUEUE_TEST_H_
+  return true;
+}
