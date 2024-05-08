@@ -6,29 +6,19 @@
 
 #include <thread>
 
+#include "common/time.h"
+
 SHE_TEST(unit_test, logger) {
-  const std::function<void(she_log::log_info)> process = [](she_log::log_info log_info) {
+  she_log::logger p([](const she_log::log_info& log_info) {
+    std::cout << she_log::detail::time::get_time_string(log_info.time_point) << "["
+              << she_log::detail::level_to_str(log_info.level) << "]" << log_info.message << std::endl;
+  });
 
-  };
-  she_log::logger p([](const she_log::log_info& log_info) { std::cout << "process:" << log_info.message << std::endl; });
-
-  p.log<she_log::log_level::ALL>("123");
-  std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-  p.log<she_log::log_level::ALL>("123");
-  std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-  p.log<she_log::log_level::ALL>("123");
-  std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-  p.log<she_log::log_level::ALL>("123");
-  std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-  p.log<she_log::log_level::ALL>("123");
-  std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-  p.log<she_log::log_level::ALL>("123");
-  std::this_thread::sleep_for(std::chrono::milliseconds(100));
+  using namespace she_log;
+  for (int i = 0; i < 10; ++i) {
+    p.log<log_level::DEBUG>(std::to_string(++i));
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+  }
 
   return true;
 }
