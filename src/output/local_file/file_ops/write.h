@@ -1,5 +1,5 @@
-#ifndef SHE_LOG_OUTPUT_FILE_OPS_WRITE_H
-#define SHE_LOG_OUTPUT_FILE_OPS_WRITE_H
+#ifndef SHE_LOG_OUTPUT_LOCAL_FILE_FILE_OPS_WRITE_H
+#define SHE_LOG_OUTPUT_LOCAL_FILE_FILE_OPS_WRITE_H
 
 #include <memory>
 #include <string>
@@ -31,4 +31,4 @@ class write {
 }  // namespace detail
 }  // namespace she_log
 
-#endif  // SHE_LOG_OUTPUT_FILE_OPS_WRITE_H
+#endif  // SHE_LOG_OUTPUT_LOCAL_FILE_FILE_OPS_WRITE_H

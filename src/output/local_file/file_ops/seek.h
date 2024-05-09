@@ -1,5 +1,5 @@
-#ifndef SHE_LOG_OUTPUT_FILE_OPS_SEEK_H
-#define SHE_LOG_OUTPUT_FILE_OPS_SEEK_H
+#ifndef SHE_LOG_OUTPUT_LOCAL_FILE_FILE_OPS_SEEK_H
+#define SHE_LOG_OUTPUT_LOCAL_FILE_FILE_OPS_SEEK_H
 
 #include <stdint.h>
 #include <stdio.h>
@@ -17,4 +17,4 @@ class seek {
 }  // namespace detail
 }  // namespace she_log
 
-#endif  // SHE_LOG_OUTPUT_FILE_OPS_SEEK_H
+#endif  // SHE_LOG_OUTPUT_LOCAL_FILE_FILE_OPS_SEEK_H
