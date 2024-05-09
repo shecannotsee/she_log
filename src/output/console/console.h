@@ -1,7 +1,3 @@
-//
-// Created by shecannotsee on 24-5-9.
-//
-
 #ifndef SHE_LOG_OUTPUT_CONSOLE_CONSOLE_H
 #define SHE_LOG_OUTPUT_CONSOLE_CONSOLE_H
 

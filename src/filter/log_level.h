@@ -1,16 +1,5 @@
-/**
- * @file log_level.h
- * @author shecannotsee (shecannotsee@163.com)
- * @brief Global log level definition
- * @version 0.1
- * @date 2023-02-27
- *
- * @copyright Copyright (c) 2023
- *
- */
-
-#ifndef SHELOG_SRC_LOG_LEVEL_H_
-#define SHELOG_SRC_LOG_LEVEL_H_
+#ifndef SHE_LOG_FILTER_LOG_LEVEL_H_
+#define SHE_LOG_FILTER_LOG_LEVEL_H_
 
 #include <string>
 
@@ -37,4 +26,4 @@ auto should_log(log_level global_level, log_level message_level) -> bool;
 
 };  // namespace she_log
 
-#endif  // SHELOG_SRC_LOG_LEVEL_H_
+#endif  // SHE_LOG_FILTER_LOG_LEVEL_H_

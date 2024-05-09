@@ -1,7 +1,3 @@
-//
-// Created by shecannotsee on 24-5-9.
-//
-
 #ifndef SHE_LOG_OUTPUT_LOCAL_FILE_LOCAL_FILE_H
 #define SHE_LOG_OUTPUT_LOCAL_FILE_LOCAL_FILE_H
 

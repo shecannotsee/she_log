@@ -2,7 +2,6 @@
 #define SHE_LOG_LOGGER_LOGGER_H
 
 #include <chrono>
-#include <functional>
 #include <string>
 #include <thread>
 #include <vector>
