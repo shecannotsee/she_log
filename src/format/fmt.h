@@ -23,7 +23,7 @@ void format_string(std::ostringstream& oss, const std::string& format, T&& arg, 
   // process {}
   oss << format.substr(0, pos);  // Add the string before the placeholder to the stream
   oss << std::forward<T>(arg);   // Add parameters to the stream
-  format_string(oss, format.substr(pos + 2), std::forward<Args>(args)...);  // recursive cal
+  format_string(oss, format.substr(pos + 2), std::forward<Args>(args)...);  // recursive call
 }
 
 }  // namespace detail
