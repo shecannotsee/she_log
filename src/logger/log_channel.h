@@ -35,7 +35,7 @@ class log_channel {
     cv.notify_one();  // 通知等待中的线程有新的日志可用
   }
 
-  void process_logs(std::vector<std::shared_ptr<output>> output_lists) {
+  void process_logs(std::vector<std::shared_ptr<output>>& output_lists) {
     while (true) {
       std::unique_lock<std::mutex> lock(mutex);
       cv.wait(lock, [this]() { return !log_queue.empty() || stop_requested; });
