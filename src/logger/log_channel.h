@@ -1,23 +1,15 @@
 #ifndef SHE_LOG_LOGGER_LOG_CHANNEL_H
 #define SHE_LOG_LOGGER_LOG_CHANNEL_H
 
-#include <chrono>
 #include <condition_variable>
 #include <memory>
 #include <mutex>
 #include <queue>
 #include <vector>
 
-#include "../filter/log_level.h"
 #include "../output/output.h"
 
 namespace she_log {
-
-struct log_info {
-  log_level level;
-  std::chrono::time_point<std::chrono::system_clock> time_point;
-  std::string message;
-};
 
 /**
  * @brief
