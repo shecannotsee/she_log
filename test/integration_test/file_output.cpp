@@ -33,8 +33,8 @@ SHE_TEST(integration_test, local_file_output_ORIGINAL) {
   local_file->set_level(she_log::log_level::ALL);
   pen.add_output_method(local_file);
   const auto console = std::make_shared<she_log::console>();
-  console->set_format(she_log::log_format::SHE_LOG);
-  console->set_level(she_log::log_level::OFF);
+  console->set_format(she_log::log_format::ORIGINAL);
+  console->set_level(she_log::log_level::ALL);
   pen.add_output_method(console);
 
   for (int i = 0; i < 10; ++i) {
@@ -55,7 +55,7 @@ SHE_TEST(integration_test, local_file_output_SHE_LOG) {
   pen.add_output_method(local_file);
   const auto console = std::make_shared<she_log::console>();
   console->set_format(she_log::log_format::SHE_LOG);
-  console->set_level(she_log::log_level::OFF);
+  console->set_level(she_log::log_level::ALL);
   pen.add_output_method(console);
 
   for (int i = 0; i < 10; ++i) {
@@ -75,8 +75,8 @@ SHE_TEST(integration_test, local_file_output_JSON) {
   local_file->set_level(she_log::log_level::ALL);
   pen.add_output_method(local_file);
   const auto console = std::make_shared<she_log::console>();
-  console->set_format(she_log::log_format::SHE_LOG);
-  console->set_level(she_log::log_level::OFF);
+  console->set_format(she_log::log_format::JSON);
+  console->set_level(she_log::log_level::ALL);
   pen.add_output_method(console);
 
   for (int i = 0; i < 10; ++i) {
@@ -96,8 +96,8 @@ SHE_TEST(integration_test, local_file_output_ERROR) {
   local_file->set_level(she_log::log_level::ALL);
   pen.add_output_method(local_file);
   const auto console = std::make_shared<she_log::console>();
-  console->set_format(she_log::log_format::SHE_LOG);
-  console->set_level(she_log::log_level::OFF);
+  console->set_format(she_log::log_format::END);
+  console->set_level(she_log::log_level::ALL);
   pen.add_output_method(console);
 
   for (int i = 0; i < 10; ++i) {
@@ -119,7 +119,7 @@ SHE_TEST(integration_test, local_file_level) {
     pen.add_output_method(local_file);
     const auto console = std::make_shared<she_log::console>();
     console->set_format(she_log::log_format::SHE_LOG);
-    console->set_level(she_log::log_level::OFF);
+    console->set_level(she_log::log_level::ALL);
     pen.add_output_method(console);
 
     pen.record<she_log::log_level::FATAL>("========DEBUG AND INFO=========");
@@ -141,7 +141,7 @@ SHE_TEST(integration_test, local_file_level) {
     pen.add_output_method(local_file);
     const auto console = std::make_shared<she_log::console>();
     console->set_format(she_log::log_format::SHE_LOG);
-    console->set_level(she_log::log_level::OFF);
+    console->set_level(she_log::log_level::ALL);
     pen.add_output_method(console);
 
     for (int i = 0; i < 10; ++i) {
@@ -160,7 +160,7 @@ SHE_TEST(integration_test, local_file_level) {
     pen.add_output_method(local_file);
     const auto console = std::make_shared<she_log::console>();
     console->set_format(she_log::log_format::SHE_LOG);
-    console->set_level(she_log::log_level::OFF);
+    console->set_level(she_log::log_level::ALL);
     pen.add_output_method(console);
 
     pen.record<she_log::log_level::FATAL>("========== JUST INFO ==========");
