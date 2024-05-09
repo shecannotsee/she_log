@@ -1,5 +1,5 @@
-#ifndef SHE_LOG_H
-#define SHE_LOG_H
+#ifndef SHE_LOG_SHE_LOG_H
+#define SHE_LOG_SHE_LOG_H
 
 #include "common/log_info.h"
 #include "common/make_unique.h"
@@ -16,5 +16,6 @@
 #include "output/local_file/local_file.h"
 #include "output/log_dest.h"
 #include "output/output.h"
+#include "version.h"
 
-#endif  // SHE_LOG_H
+#endif  // SHE_LOG_SHE_LOG_H
