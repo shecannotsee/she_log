@@ -37,6 +37,7 @@ if (generate_lib STREQUAL "ON")
     )
     install(FILES # /format
             ${CMAKE_SOURCE_DIR}/src/format/log_format.h
+            ${CMAKE_SOURCE_DIR}/src/format/fmt.h
             DESTINATION # to
             ${PROJECT_NAME}/include/format # target dir
     )
