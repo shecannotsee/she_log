@@ -1,25 +1,25 @@
-### Introduction
+### 简介
 
-she_log is a C++ logging library.
+she_log 是一个cpp的日志
 
-Author: shecannotsee (shecannotsee@163.com)
-
-
-
-### Features
-
-- she_test is developed based on C++11.
-- she_log provides normal logging functionality and allows you to choose where the logs are outputted (console or log file) according to your needs. You can also add your own output modules as per your requirements. Additionally, you can customize the output format.
+作者：shecannotsee（shecannotsee@163.com）
 
 
 
-### Usage Instructions
+### 特点
 
-You need to build the library from the source code according to the build process and then add the library to your project in order to use its functionality.
+- she_test 是基于 c++11开发。
+- she_log 提供了正常的日志记录功能，并且根据您的需求可以选择日志输出的地方（控制台或者是日志文件）；您也可以根据您的需求添加自己的输出模块；当然了，您也可以定制您的输出格式。
 
-#### 1.Console Output
 
-The following code demonstrates how to use the library to output log messages on the console:
+
+### 使用说明
+
+您需要按照构建流程从源码构建库，然后将库添加到您的项目中，才能够使用该库的功能。
+
+#### 1.控制台输出
+
+下面的代码展示了如何使用该库在控制台上输出日志消息
 
 ```cpp
 /* @file main.cpp */
@@ -27,16 +27,16 @@ The following code demonstrates how to use the library to output log messages on
 
 int main(int argc, char** argv) {
   she_log::logger pen;
-  // Add output method for logs, selecting console output here
+  // 为日志添加输出方式，这里选择在控制台进行输出
   const auto console = std::make_shared<she_log::console>();
-  // Choose SHE_LOG as the output format
+  // 输出格式选择为 SHE_LOG
   console->set_format(she_log::log_format::SHE_LOG);
-  // Set log level to ALL (i.e., output all log levels)
+  // 输出日志等级为 ALL (也就是说会输出所有等级的日志)
   console->set_level(she_log::log_level::ALL);
-  // Add the output method to the logger
+  // 将输出模式添加到 logger 中
   pen.add_output_method(console);
 
-  // Add ten DEBUG level logs and output
+  // 添加十条 DEBUG 级别的日志并输出
   for (int i = 0; i < 10; ++i) {
     auto msg = std::to_string(i + 1);
     pen.record<she_log::log_level::DEBUG>(msg);
@@ -47,13 +47,13 @@ int main(int argc, char** argv) {
 }
 ```
 
-You will soon see some recorded logs appearing on the console.
+您稍后就会发现控制台中会出现一些记录的日志。
 
 
 
-#### 2. Log File Output
+#### 2.日志文件输出
 
-The following code demonstrates how to use the library to output log messages to a log file:
+下面的代码展示了如何使用该库在日志文件上输出日志消息
 
 ```cpp
 /* @file main.cpp */
@@ -61,16 +61,16 @@ The following code demonstrates how to use the library to output log messages to
 
 int main(int argc, char** argv) {
   she_log::logger pen;
-  // Add output method for logs, selecting log file output here
+  // 为日志添加输出方式，这里选择在控制台进行输出
   const auto console = std::make_shared<she_log::local_file>("test_log.txt");
-  // Choose SHE_LOG as the output format
+  // 输出格式选择为 SHE_LOG
   console->set_format(she_log::log_format::SHE_LOG);
-  // Set log level to ALL (i.e., output all log levels)
+  // 输出日志等级为 ALL (也就是说会输出所有等级的日志)
   console->set_level(she_log::log_level::ALL);
-  // Add the output method to the logger
+  // 将输出模式添加到 logger 中
   pen.add_output_method(console);
 
-  // Add ten DEBUG level logs and output
+  // 添加十条 DEBUG 级别的日志并输出
   for (int i = 0; i < 10; ++i) {
     auto msg = std::to_string(i + 1);
     pen.record<she_log::log_level::DEBUG>(msg);
@@ -81,13 +81,13 @@ int main(int argc, char** argv) {
 }
 ```
 
-You will soon find some recorded logs in the log file test_log.txt.
+您稍后就会发现日志文件 test_log.txt 中会出现一些记录的日志。
 
 
 
-#### 3. Multiple Outputs
+#### 3.多种输出
 
-You can also add multiple output channels simultaneously, for example, adding both log file output and console output:
+您也可以同时添加多个输出端，例如同时添加日志文件输出和控制台输出
 
 ```cpp
 // ......
@@ -99,13 +99,13 @@ You can also add multiple output channels simultaneously, for example, adding bo
 // ......
 ```
 
-Now, log messages will be outputted not only on the console but also in the file. If you set the output formats of the two output methods to be the same, you will find that the contents in the file and on the console are identical.
+此时的日志消息不仅会在控制台上输出，而且日志消息会在文件中输出。如果您设置的两种输出模式的输出格式相同，您会发现文件和控制台中的内容是完全相同的。
 
 
 
-#### 4. Simple fmt
+#### 4.简单的fmt
 
-The logging library also provides a simple fmt interface:
+该日志库还提供了一个简单的fmt接口
 
 ```cpp
 #include <she_log>
@@ -155,17 +155,17 @@ int main() {
 
 ```
 
-If needed, you can directly extract the `she_log/src/format/fmt.h` file and immediately start using the fmt function.
+如果您有需要，您也可以直接把`she_log/src/format/fmt.h`文件取出，然后马上就可以使用fmt函数了。
 
 
 
-#### 5. Further References
+#### 5.更多的参考
 
-You can refer to the C++ project in `she_log/sample`, which is an example of building and using she_log.
+您可以参考`she_log/sample`中的c++项目，该项目是构建并且使用 she_log 的一个例子。
 
 
 
-### Obtaining Source Code and Building the Project
+### 获取源码以及构建项目
 
 ```bash
 $ git clone https://github.com/shecannotsee/she_log
@@ -214,4 +214,3 @@ she_log
 12 directories, 20 files
 $
 ```
-
