@@ -12,6 +12,8 @@
 #ifndef SHE_LOG_SRC_LOG_FORMAT_H_
 #define SHE_LOG_SRC_LOG_FORMAT_H_
 
+#include "../common/log_info.h"
+
 namespace she_log {
 
 enum class log_format : unsigned char {
@@ -21,7 +23,11 @@ enum class log_format : unsigned char {
   END            ///< Marks the end
 };
 
-namespace detail {}
+namespace detail {
+
+auto format_message(const log_info& log, log_format format = log_format::ORIGINAL) -> std::string;
+
+}
 
 };  // namespace she_log
 
