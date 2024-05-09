@@ -1,9 +1,15 @@
 #ifndef SHE_LOG_LOGGER_LOG_CHANNEL_H
 #define SHE_LOG_LOGGER_LOG_CHANNEL_H
 
+#include <chrono>
 #include <condition_variable>
+#include <memory>
 #include <mutex>
 #include <queue>
+#include <vector>
+
+#include "../filter/log_level.h"
+#include "../output/output.h"
 
 namespace she_log {
 
@@ -37,7 +43,7 @@ class log_channel {
     cv.notify_one();  // 通知等待中的线程有新的日志可用
   }
 
-  void process_logs(const std::function<void(log_info)>& process_func) {
+  void process_logs(std::vector<std::shared_ptr<output>> output_lists) {
     while (true) {
       std::unique_lock<std::mutex> lock(mutex);
       cv.wait(lock, [this]() { return !log_queue.empty() || stop_requested; });
@@ -50,8 +56,8 @@ class log_channel {
       lock.unlock();
 
       // process log_info
-      if (process_func != nullptr) {
-        process_func(log);
+      for (auto& dest : output_lists) {
+        dest->destination(log);
       }
     }
   }

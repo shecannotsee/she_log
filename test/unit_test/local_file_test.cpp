@@ -2,9 +2,9 @@
 // Created by shecannotsee on 24-5-8.
 //
 
-#include <output/local_file/file.h>
-#include <output/local_file/seek.h>
-#include <output/local_file/write.h>
+#include <output/local_file/file_ops//file.h>
+#include <output/local_file/file_ops//seek.h>
+#include <output/local_file/file_ops//write.h>
 #include <she_test.h>
 
 namespace {

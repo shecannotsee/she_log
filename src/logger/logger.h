@@ -5,17 +5,19 @@
 #include <functional>
 #include <string>
 #include <thread>
+#include <vector>
 
-#include "filter/log_level.h"
+#include "../output/output.h"
+#include "../filter/log_level.h"
 #include "log_channel.h"
 
 namespace she_log {
 
 class logger {
  public:
-  explicit logger(std::function<void(log_info)> process_func) {
+  explicit logger() {
     process_thread_ = std::thread(
-        [this, &process_func]() { buffer_.process_logs(std::forward<std::function<void(log_info)>>(process_func)); });
+        [this]() { buffer_.process_logs(outputs_); });
   };
   ~logger() {
     buffer_.stop();
@@ -23,18 +25,23 @@ class logger {
   }
 
  private:
-  log_channel<log_info> buffer_;
-  std::thread process_thread_;
+  log_channel<log_info> buffer_;                  ///< message(log) queue
+  std::thread process_thread_;                    ///< process message(log) thread
+  std::vector<std::shared_ptr<output>> outputs_;  // output method
 
  public:
   template <log_level level>
-  void log(const std::string& log_message) {
+  void record(const std::string& log_message) {
     log_info temp;
     temp.level      = level;
     temp.time_point = std::chrono::system_clock::now();
     temp.message    = log_message;
 
     buffer_.push_log(temp);
+  }
+
+  void add_output_method(std::shared_ptr<output> output_method) {
+    outputs_.emplace_back(output_method);
   }
 };
 }  // namespace she_log
