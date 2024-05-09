@@ -28,24 +28,11 @@ enum class log_level : unsigned char {
 };
 
 namespace detail {
-static std::string level_to_str(const log_level level) {
-  switch (level) {
-    case log_level::TRACE:
-      return "TRACE";
-    case log_level::DEBUG:
-      return "DEBUG";
-    case log_level::INFO:
-      return "INFO";
-    case log_level::WARNING:
-      return "WARN";
-    case log_level::ERROR:
-      return "ERROR";
-    case log_level::FATAL:
-      return "FATAL";
-    default:
-      return "UNKNOWN";
-  }
-}
+
+auto level_to_str(log_level level) -> std::string;
+
+auto should_log(log_level global_level, log_level message_level) -> bool;
+
 }  // namespace detail
 
 };  // namespace she_log
