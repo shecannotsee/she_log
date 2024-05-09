@@ -24,9 +24,11 @@ SHE_TEST(unit_test, logger) {
   she_log::logger pen;
 
   pen.add_output_method(std::make_shared<output_test>());
+  pen.add_output_method(std::make_shared<output_test>());
+  pen.add_output_method(std::make_shared<output_test>());
 
   using namespace she_log;
-  for (int i = 0; i < 10; ++i) {
+  for (int i = 0; i < 10;) {
     pen.record<log_level::DEBUG>(std::to_string(++i));
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
   }
