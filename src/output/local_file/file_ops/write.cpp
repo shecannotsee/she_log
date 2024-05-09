@@ -15,9 +15,15 @@ void write::content(const std::string& data) const {
     throw std::runtime_error("file_ptr_ handle is nullptr");
   }
 
-  const auto len = data.size();
-  if (fwrite(data.c_str(), sizeof(char), data.size(), file_ptr_.get()) != len) {
-    throw std::runtime_error("fwrite failed");
+  // set buffer size: 0
+  setbuf(file_ptr_.get(), 0);
+
+  if (EOF == fputs(data.c_str(), file_ptr_.get())) {
+    throw std::runtime_error("Failed to write to file with fputs.");
+  }
+  // buffer -> file
+  if (fflush(file_ptr_.get()) != 0) {
+    // handle error
   }
 }
 }  // namespace detail
