@@ -5,6 +5,7 @@
 #include "common/make_unique.h"
 #include "common/time.h"
 #include "filter/log_level.h"
+#include "format/fmt.h"
 #include "format/log_format.h"
 #include "logger/log_channel.h"
 #include "logger/logger.h"
