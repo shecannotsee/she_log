@@ -19,6 +19,12 @@ void write::content(const std::string& data) const {
   if (fwrite(data.c_str(), sizeof(char), data.size(), file_ptr_.get()) != len) {
     throw std::runtime_error("fwrite failed");
   }
+
+  // User-mode memory -> Kernel - state memory
+  // The file is written immediately
+  if (fflush(file_ptr_.get()) != 0) {
+    throw std::runtime_error("fflush failed");
+  }
 }
 }  // namespace detail
 }  // namespace she_log
